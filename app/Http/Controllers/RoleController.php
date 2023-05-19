@@ -13,7 +13,8 @@ class RoleController extends Controller
     public function index()
     {
         $roles = Role::find(1);
-        dd($roles);
+        return view('user.home', compact('roles'));
+
     }
 
     /**

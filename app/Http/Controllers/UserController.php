@@ -14,7 +14,7 @@ class UserController extends Controller
     {
         $users = User::find(1);
         // dd($users);
-        return view('user.home', compact('users'));
+        // return view('user.home', compact('users'));
     }
 
     /**

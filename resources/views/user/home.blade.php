@@ -1,5 +1,5 @@
-<ul>
-    @foreach ($users as $user)
-    <li>{{$user->name}}</li>
+<ul>Admin
+    @foreach ($roles as $role)
+    <li>{{$roles->users}}</li>
     @endforeach
 </ul>

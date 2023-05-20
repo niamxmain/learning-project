@@ -12,7 +12,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::find(1);
+        $users = User::all();
         // dd($users);
         // return view('user.home', compact('users'));
     }

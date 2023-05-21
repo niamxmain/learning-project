@@ -22,3 +22,7 @@ Route::get('/', function () {
 Route::view('/login', 'users.login');
 Route::get('/user', [UserController::class, 'index']);
 Route::get('/role', [RoleController::class, 'index']);
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

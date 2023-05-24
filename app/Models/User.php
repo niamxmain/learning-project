@@ -31,4 +31,9 @@ class User extends Model
         // return $this->belongsToMany(Role::class, 'role_user', 'user_id', 'role_id')->withTimestamps();
         return $this->belongsToMany(Role::class,);
     }
+
+    public function tasks() 
+    {
+        return $this->hasMany(Task::class);
+    }
 }

@@ -13,10 +13,15 @@ return new class extends Migration
     {
         Schema::create('tasks', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->text('description');
-            $table->unsignedBigInteger('parent_id')->nullable();
+            $table->string('name');
+            $table->dateTime('batas_waktu');
+            $table->string('status');
+            $table->unsignedBigInteger('project_id');
+            $table->unsignedBigInteger('admin_id');
             $table->timestamps();
+    
+            $table->foreign('project_id')->references('id')->on('projects')->onDelete('cascade');
+            $table->foreign('admin_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

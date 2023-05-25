@@ -25,8 +25,15 @@ class User extends Model
         'email_verified_at' => 'datetime',
     ];
 
-    public function tasks() 
+    // public function tasks() 
+    // {
+    //     return $this->hasMany(Task::class);
+    // }
+
+    public function projects()
     {
-        return $this->hasMany(Task::class);
+        return $this->belongsToMany(Project::class, 'project_user')
+            ->withPivot('role')
+            ->withTimestamps();
     }
 }

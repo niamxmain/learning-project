@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('project_id');
             $table->unsignedBigInteger('user_id');
-            $table->string('role');
+            $table->enum('role',['admin', 'sub-admin']);
             $table->timestamps();
 
             // Define foreign keys

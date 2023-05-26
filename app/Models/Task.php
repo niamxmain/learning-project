@@ -29,11 +29,6 @@ class Task extends Model
         return $this->belongsTo(Project::class, 'project_id');
     }
 
-    public function admin()
-    {
-        return $this->belongsTo(User::class, 'admin_id');
-    }
-
     public function comments()
     {
         return $this->hasMany(Comment::class, 'task_id');

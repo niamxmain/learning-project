@@ -17,11 +17,11 @@ return new class extends Migration
             $table->dateTime('batas_waktu');
             $table->string('status');
             $table->unsignedBigInteger('project_id');
-            $table->unsignedBigInteger('admin_id');
+            $table->unsignedBigInteger('user_id');
             $table->timestamps();
     
             $table->foreign('project_id')->references('id')->on('projects')->onDelete('cascade');
-            $table->foreign('admin_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

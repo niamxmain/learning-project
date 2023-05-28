@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
@@ -15,12 +16,12 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->time('deadline');
-            $table->foreignId('user_id');
-            $table->foreignId('task_id');
+            $table->foreignId('user_id')->default(0);
+            $table->foreignId('task_id')->default(0);
             $table->timestamps();
 
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('task_id')->references('id')->on('tasks')->onDelete('cascade');
+            // $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            // $table->foreign('task_id')->references('id')->on('tasks')->onDelete('cascade');
         });
     }
 

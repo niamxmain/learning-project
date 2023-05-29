@@ -15,7 +15,7 @@ return new class extends Migration
         Schema::create('projects', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->time('deadline');
+            $table->time('deadline')->default(now());
             $table->foreignId('user_id');
             $table->foreignId('task_id');
             $table->timestamps();

@@ -19,9 +19,21 @@ class ProjectController extends Controller
 
     public function store(Request $request)
     {
-        $validate = Validator::make($request->all(), 
+        $validator = Validator::make($request->all(), 
         [
-            
+            'title' => 'required',
+            'user_id' => 'required',
+            'task_id' => 'required',
         ]);
+        if ($validator->fails()) {
+            return response()->json($validator->errors(), 422);
+        }
+
+        $project = Project::create([
+            'title' => $request->title,
+            'user_id' => $request->user_id,
+            'task_id' => $request->task_id,
+        ]);
+        return new ProjectResource(true, 'data telah masuk', $project);
     }
 }

@@ -16,8 +16,8 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->time('deadline');
-            $table->foreignId('user_id')->default(0);
-            $table->foreignId('task_id')->default(0);
+            $table->foreignId('user_id');
+            $table->foreignId('task_id');
             $table->timestamps();
 
             // $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

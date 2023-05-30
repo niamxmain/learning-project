@@ -41,4 +41,26 @@ class ProjectController extends Controller
     {
         return new ProjectResource(true, 'detail data', $project);
     }
+
+    public function update(Request $request, Project $project)
+    {
+        $validator = Validator::make($request->all(), 
+        [
+            'title' => 'required',
+            'user_id' => 'required',
+            'task_id' => 'required',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json($validator->errors(), 422);
+        }
+
+        $project->update([
+            'title' => $request->title,
+            'user_id' => $request->user_id,
+            'task_id' => $request->task_id,
+        ]);
+
+        return new ProjectResource(true, 'data berhasil diupdate', $project);
+    }
 }

@@ -36,4 +36,9 @@ class ProjectController extends Controller
         ]);
         return new ProjectResource(true, 'data telah masuk', $project);
     }
+
+    public function show(Project $project)
+    {
+        return new ProjectResource(true, 'detail data', $project);
+    }
 }

@@ -57,14 +57,13 @@ class ProjectController extends Controller
             return response()->json($validator->errors(), 422);
         }
 
-        // $project->update([
-        //     'title' => $request->title,
-        //     'user_id' => $request->user_id,
-        //     'task_id,' => $request->task_id,
-        // ],);
-        $project->update($request->all());
+        $project->update([
+            'title' => $request->title,
+            'user_id' => $request->user_id,
+            'task_id' => $request->task_id,
+        ]);
 
-        return new ProjectResource(true, 'data berhasil diupdate', []);
+        return new ProjectResource(true, 'data berhasil diupdate', $project);
     }
 
     public function destroy(Project $project)

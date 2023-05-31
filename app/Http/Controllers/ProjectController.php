@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Api;
+namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Http\Resources\ProjectResource;
@@ -42,6 +42,8 @@ class ProjectController extends Controller
         return new ProjectResource(true, 'detail data', $project);
     }
 
+
+    // UPDATE MASIH ERROR
     public function update(Request $request, Project $project)
     {
         $validator = Validator::make($request->all(), 
@@ -55,12 +57,19 @@ class ProjectController extends Controller
             return response()->json($validator->errors(), 422);
         }
 
-        $project->update([
-            'title' => $request->title,
-            'user_id' => $request->user_id,
-            'task_id' => $request->task_id,
-        ]);
+        // $project->update([
+        //     'title' => $request->title,
+        //     'user_id' => $request->user_id,
+        //     'task_id,' => $request->task_id,
+        // ],);
+        $project->update($request->all());
 
-        return new ProjectResource(true, 'data berhasil diupdate', $project);
+        return new ProjectResource(true, 'data berhasil diupdate', []);
+    }
+
+    public function destroy(Project $project)
+    {
+        $project->delete();
+        return new ProjectResource(true, 'data berhasil dihapus', $project);
     }
 }
